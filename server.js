@@ -152,24 +152,28 @@ if (BOT_TOKEN) {
 
     const targetId = parseInt(match[1]);
     const newKey = generateLicenseKey();
-    await saveLicense(newKey, {
-      telegramId: targetId,
-      createdAt: Date.now(),
-      usedAt: null,
-      active: true,
-      hwid: null,
-      note: `Approved for TG ID: ${targetId}`
-    });
+    try {
+      await saveLicense(newKey, {
+        telegramId: targetId,
+        createdAt: Date.now(),
+        usedAt: null,
+        active: true,
+        hwid: null,
+        note: `Approved for TG ID: ${targetId}`
+      });
 
-    bot.sendMessage(targetId,
-      `🎉 *License Key របស់អ្នក:*\n\n` +
-      `\`${newKey}\`\n\n` +
-      `📋 Copy key ខាងលើ ហើយ paste ក្នុង *${APP_NAME}*\n` +
-      `✅ ប្រើបានភ្លាមៗ — ឥតគិតថ្លៃ!\n\n` +
-      `⚠️ License នេះ bind ទៅ device ១ ។`,
-      { parse_mode: 'Markdown' });
+      bot.sendMessage(targetId,
+        `🎉 *License Key របស់អ្នក:*\n\n` +
+        `\`${newKey}\`\n\n` +
+        `📋 Copy key ខាងលើ ហើយ paste ក្នុង *${APP_NAME}*\n` +
+        `✅ ប្រើបានភ្លាមៗ — ឥតគិតថ្លៃ!\n\n` +
+        `⚠️ License នេះ bind ទៅ device ១ ។`,
+        { parse_mode: 'Markdown' });
 
-    bot.sendMessage(chatId, `✅ License \`${newKey}\` បានផ្ញើដល់ User ${targetId}`, { parse_mode: 'Markdown' });
+      bot.sendMessage(chatId, `✅ License \`${newKey}\` បានផ្ញើដល់ User ${targetId}`, { parse_mode: 'Markdown' });
+    } catch (error) {
+      bot.sendMessage(chatId, `❌ Error Saving License (Firebase): ${error.message}`);
+    }
   });
 
   bot.onText(/\/genkey/, async (msg) => {
@@ -179,15 +183,19 @@ if (BOT_TOKEN) {
       return;
     }
     const key = generateLicenseKey();
-    await saveLicense(key, {
-      telegramId: null,
-      createdAt: Date.now(),
-      usedAt: null,
-      active: true,
-      hwid: null,
-      note: 'Manual generate by owner'
-    });
-    bot.sendMessage(chatId, `🔑 *License Key ថ្មី:*\n\`${key}\``, { parse_mode: 'Markdown' });
+    try {
+      await saveLicense(key, {
+        telegramId: null,
+        createdAt: Date.now(),
+        usedAt: null,
+        active: true,
+        hwid: null,
+        note: 'Manual generate by owner'
+      });
+      bot.sendMessage(chatId, `🔑 *License Key ថ្មី:*\n\`${key}\``, { parse_mode: 'Markdown' });
+    } catch (error) {
+      bot.sendMessage(chatId, `❌ Error Saving License (Firebase): ${error.message}`);
+    }
   });
 
   bot.onText(/\/listkeys/, async (msg) => {
