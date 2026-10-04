@@ -46,15 +46,19 @@
 
 ---
 
-## 🚀 ការប្រើប្រាស់
+## 🚀 ការប្រើប្រាស់ និង ការចុះឈ្មោះ (License)
+
+កម្មវិធីនេះទាមទារ **License Key** ដើម្បីដំណើរការ ប៉ុន្តែវាគឺ **ឥតគិតថ្លៃ ១០០%**! ការដាក់ License គឺដើម្បីជួយគ្រប់គ្រងចំនួនអ្នកប្រើប្រាស់ប៉ុណ្ណោះ។
+
+### 🔑 របៀបសុំ License Key
+1. ចូលទៅកាន់ Telegram ស្វែងរក Bot: [@AiStudioPro2_bot](https://t.me/AiStudioPro2_bot)
+2. ចុច **Start** រួចវាយបញ្ជា `/getlicense`
+3. រង់ចាំ Admin អនុម័ត (Approve) នោះអ្នកនឹងទទួលបាន License Key ភ្លាមៗ។
+4. Copy យក License Key នោះទៅ Paste បញ្ចូលក្នុងកម្មវិធី Dubber Pro រួចចុច Activate ជាការស្រេច! 
+   *(ចំណាំ៖ License មួយអាចភ្ជាប់បានជាមួយកុំព្យូទ័រមួយប៉ុណ្ណោះ)*
 
 ### ទាញយក (Download)
-ចូលទៅ [**Releases**](https://github.com/limsorn9/Ai-Studio-Pro/releases) ហើយទាញយក installer ចុងក្រោយបំផុត។
-
-### ដំណើរការ
-1. ទាញយក `Dubber_Pro_Setup.exe`
-2. Install ហើយ Run
-3. ប្រើបានភ្លាមៗ — **ឥតគិតថ្លៃ 100%**
+ចូលទៅ [**Releases**](https://github.com/limsorn9/Ai-Studio-Pro/releases) ហើយទាញយក installer ចុងក្រោយបំផុត (`Dubber_Pro_Setup.exe`) ធ្វើការ Install ធម្មតា។
 
 ---
 
