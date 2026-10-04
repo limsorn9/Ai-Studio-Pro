@@ -37,10 +37,13 @@ logs/
 *.tmp
 *.temp
 
-# API Keys / Secrets
+# API Keys / Secrets — ⚠️ NEVER commit these!
 .env
 .env.local
+.env.production
+.env*.local
 *.key
+secrets.json
 
 # IDE
 .vscode/
