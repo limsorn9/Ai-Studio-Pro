@@ -263,10 +263,10 @@ app.get('/', async (req, res) => {
   });
 });
 
-app.post('/api/activate', async (req, res) => {
+app.post('/api/v1/dubber-bei-sach-voice-clone-pro/license/activate/?', async (req, res) => {
   const record = req.body.record || req.body;
-  const key = record.license_key || req.body.key;
-  const hwid = record.hardware_id || req.body.hwid;
+  const key = record.license_key || req.body.key || req.body.license_key;
+  const hwid = record.hardware_id || req.body.hwid || req.body.hardware_id;
   if (!key) return res.status(400).json({ success: false, message: 'Key required' });
 
   const upperKey = key.trim().toUpperCase();
@@ -284,10 +284,10 @@ app.post('/api/activate', async (req, res) => {
   res.json({ success: true, status: 'active' });
 });
 
-app.post('/api/verify', async (req, res) => {
+app.post('/api/v1/dubber-bei-sach-voice-clone-pro/license/verify/?', async (req, res) => {
   const record = req.body.record || req.body;
-  const key = record.license_key || req.body.key;
-  const hwid = record.hardware_id || req.body.hwid;
+  const key = record.license_key || req.body.key || req.body.license_key;
+  const hwid = record.hardware_id || req.body.hwid || req.body.hardware_id;
   if (!key) return res.status(400).json({ success: false, message: 'Key required' });
 
   const upperKey = key.trim().toUpperCase();
