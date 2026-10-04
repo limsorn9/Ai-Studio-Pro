@@ -143,10 +143,15 @@ if (BOT_TOKEN) {
       { parse_mode: 'Markdown' });
   });
 
-  bot.onText(/\/approve (.+)/, async (msg, match) => {
+  bot.onText(/\/approve(?:\s+(.+))?/, async (msg, match) => {
     const chatId = msg.chat.id;
     if (String(chatId) !== String(OWNER_CHAT_ID)) {
       bot.sendMessage(chatId, '❌ Permission denied.');
+      return;
+    }
+
+    if (!match[1]) {
+      bot.sendMessage(chatId, '⚠️ សូមវាយបញ្ចូល ID ពីក្រោយពាក្យ approve។\n👉 ឧទាហរណ៍៖ `/approve 240224709`', { parse_mode: 'Markdown' });
       return;
     }
 
