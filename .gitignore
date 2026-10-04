@@ -1,0 +1,47 @@
+# Node
+node_modules/
+npm-debug.log*
+
+# Build outputs
+app_source/out/
+
+# Electron build
+dist/
+release/
+
+# App binary (ធំពេក សម្រាប់ GitHub)
+app/Dubber_Pro.exe
+app/Dubber\ បីសាច\ [\ Clone\ សម្លេង\ Pro\ ].exe
+app/*.exe
+app/*.dll
+app/*.pak
+app/*.bin
+app/*.dat
+app/*.json
+app/locales/
+app/resources/
+
+# Installer extracted
+installer_extracted/
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs
+*.log
+logs/
+
+# Temp
+*.tmp
+*.temp
+
+# API Keys / Secrets
+.env
+.env.local
+*.key
+
+# IDE
+.vscode/
+.idea/
