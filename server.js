@@ -11,7 +11,7 @@ app.use(cors());
 // CONFIG
 // ============================================================
 const BOT_TOKEN = process.env.API_Bot;
-const OWNER_CHAT_ID = process.env.OWNER_CHAT_ID; // ដាក់ chat ID របស់អ្នកក្នុង Render env
+const OWNER_CHAT_ID = process.env.OWNER_CHAT_ID || '240224709'; // @limsorn
 const PORT = process.env.PORT || 3000;
 const APP_NAME = 'Dubber Pro / AI Studio Pro';
 
