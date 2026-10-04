@@ -14,7 +14,7 @@ app.use(cors());
 const BOT_TOKEN = process.env.TELEGRAM_TOKEN || process.env.API_Bot;
 const OWNER_CHAT_ID = process.env.OWNER_CHAT_ID || '240224709'; // @limsorn
 const PORT = process.env.PORT || 3000;
-const APP_NAME = 'Dubber Pro / AI Studio Pro';
+const APP_NAME = 'AiStudioPro កំពូលអ្នកបកប្រែសម្លេង';
 
 // ============================================================
 // FIREBASE INIT
@@ -82,7 +82,7 @@ async function updateLicense(key, updates) {
 // ============================================================
 function generateLicenseKey() {
   const part = () => crypto.randomBytes(3).toString('hex').toUpperCase();
-  return `DUBPRO-${part()}-${part()}-${part()}`;
+  return `AISTUDIO-${part()}-${part()}-${part()}`;
 }
 
 function formatDate(ms) {

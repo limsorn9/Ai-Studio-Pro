@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🎙️ Dubber បីសាច — Clone សម្លេង Pro
+# 🎙️ AiStudioPro — កំពូលអ្នកបកប្រែសម្លេង
 
 **កម្មវិធី Dubbing & Voice Clone ភាសាខ្មែរ ឥតគិតថ្លៃ**
 
@@ -15,7 +15,7 @@
 
 ## 📖 អំពីកម្មវិធី
 
-**Dubber បីសាច** គឺជា Desktop Application (Electron) ដែលជួយអ្នកក្នុងការ:
+**AiStudioPro** គឺជា Desktop Application (Electron) ដែលជួយអ្នកក្នុងការ:
 
 - 🎤 **Clone សម្លេង** — Copy tone, pitch, និង style សម្លេងពី video ណាមួយ
 - 🌐 **Dub ភាសា** — បកប្រែ និង dub ទៅជាភាសា **70+ ភាសា** ដោយស្វ័យប្រវត្តិ
@@ -54,11 +54,11 @@
 1. ចូលទៅកាន់ Telegram ស្វែងរក Bot: [@AiStudioPro2_bot](https://t.me/AiStudioPro2_bot)
 2. ចុច **Start** រួចវាយបញ្ជា `/getlicense`
 3. រង់ចាំ Admin អនុម័ត (Approve) នោះអ្នកនឹងទទួលបាន License Key ភ្លាមៗ។
-4. Copy យក License Key នោះទៅ Paste បញ្ចូលក្នុងកម្មវិធី Dubber Pro រួចចុច Activate ជាការស្រេច! 
+4. Copy យក License Key នោះទៅ Paste បញ្ចូលក្នុងកម្មវិធី AiStudioPro រួចចុច Activate ជាការស្រេច! 
    *(ចំណាំ៖ License មួយអាចភ្ជាប់បានជាមួយកុំព្យូទ័រមួយប៉ុណ្ណោះ)*
 
 ### ទាញយក (Download)
-ចូលទៅ [**Releases**](https://github.com/limsorn9/Ai-Studio-Pro/releases) ហើយទាញយក installer ចុងក្រោយបំផុត (`Dubber_Pro_Setup.exe`) ធ្វើការ Install ធម្មតា។
+ចូលទៅ [**Releases**](https://github.com/limsorn9/Ai-Studio-Pro/releases) ហើយទាញយក installer ចុងក្រោយបំផុត (`AiStudioPro_Setup.exe`) ធ្វើការ Install ធម្មតា។
 
 ---
 
@@ -70,7 +70,7 @@
 
 ## 📄 License
 
-MIT License — © 2026 **Dubber បីសាច [ Clone សម្លេង Pro ]**
+MIT License — © 2026 **AiStudioPro កំពូលអ្នកបកប្រែសម្លេង**
 
 ចែករំលែកបាន · ប្រើដោយឥតគិតថ្លៃ · Open Source
 
