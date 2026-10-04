@@ -1,11 +1,15 @@
 services:
   - type: web
     name: ai-studio-pro
-    runtime: static
-    buildCommand: echo "No build needed - static release"
-    staticPublishPath: .
-    pullRequestPreviewsEnabled: false
-    headers:
-      - path: /*
-        name: Cache-Control
-        value: no-cache
+    runtime: node
+    buildCommand: npm install
+    startCommand: node server.js
+    plan: free
+    region: singapore
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: API_Bot
+        sync: false
+      - key: OWNER_CHAT_ID
+        sync: false
