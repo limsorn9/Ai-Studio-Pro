@@ -103,7 +103,7 @@ if (BOT_TOKEN) {
       `🔑 *Commands:*\n` +
       `/getlicense — ទទួល License Key\n` +
       `/check \\[key\\] — ពិនិត្យ License\n\n` +
-      `📬 Contact: @limsorn9`,
+      `📬 Contact: @limsorn`,
       { parse_mode: 'Markdown' });
   });
 
@@ -139,7 +139,7 @@ if (BOT_TOKEN) {
     bot.sendMessage(chatId,
       `⏳ Request បានទទួលរួចហើយ!\n\n` +
       `🔄 Admin នឹង approve License Key ក្នុងពេលឆាប់ៗ\n` +
-      `📬 Contact: @limsorn9`,
+      `📬 Contact: @limsorn`,
       { parse_mode: 'Markdown' });
   });
 
