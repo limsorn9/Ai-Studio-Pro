@@ -263,23 +263,43 @@ app.get('/', async (req, res) => {
   });
 });
 
-app.post('/api/validate', async (req, res) => {
-  const { key, hwid } = req.body;
-  if (!key) return res.status(400).json({ valid: false, message: 'Key required' });
+app.post('/api/activate', async (req, res) => {
+  const record = req.body.record || req.body;
+  const key = record.license_key || req.body.key;
+  const hwid = record.hardware_id || req.body.hwid;
+  if (!key) return res.status(400).json({ success: false, message: 'Key required' });
 
   const upperKey = key.trim().toUpperCase();
   const lic = await getLicense(upperKey);
-  if (!lic) return res.json({ valid: false, message: 'License key not found' });
-  if (!lic.active) return res.json({ valid: false, message: 'License has been revoked' });
+  if (!lic) return res.status(404).json({ success: false, message: 'License key not found' });
+  if (!lic.active) return res.status(403).json({ success: false, message: 'License has been revoked' });
 
   if (!lic.hwid && hwid) {
     await updateLicense(upperKey, { hwid, usedAt: Date.now() });
     lic.usedAt = Date.now();
   } else if (lic.hwid && hwid && lic.hwid !== hwid) {
-    return res.json({ valid: false, message: 'License is bound to another device' });
+    return res.status(403).json({ success: false, message: 'License is bound to another device' });
   }
 
-  res.json({ valid: true, message: 'License valid', key: upperKey, activatedAt: lic.usedAt });
+  res.json({ success: true, status: 'active' });
+});
+
+app.post('/api/verify', async (req, res) => {
+  const record = req.body.record || req.body;
+  const key = record.license_key || req.body.key;
+  const hwid = record.hardware_id || req.body.hwid;
+  if (!key) return res.status(400).json({ success: false, message: 'Key required' });
+
+  const upperKey = key.trim().toUpperCase();
+  const lic = await getLicense(upperKey);
+  if (!lic) return res.status(404).json({ success: false, message: 'License key not found' });
+  if (!lic.active) return res.status(403).json({ success: false, message: 'License has been revoked' });
+
+  if (lic.hwid && hwid && lic.hwid !== hwid) {
+    return res.status(403).json({ success: false, message: 'License is bound to another device' });
+  }
+
+  res.json({ success: true, status: 'active' });
 });
 
 app.get('/api/license/:key', async (req, res) => {
