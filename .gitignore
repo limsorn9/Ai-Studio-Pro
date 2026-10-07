@@ -35,7 +35,9 @@ logs/
 *.key
 secrets.json
 
-# Archives
+# Archives and build installer output
 *.zip
 Demucs_Bundle_CUDA.zip
+out/
+*.bin
 
