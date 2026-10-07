@@ -1,7 +1,7 @@
 [Setup]
-AppId={{AiStudio-PRO-V2.6.1}
+AppId={{AiStudio-PRO-V2.6.2}
 AppName=Ai Studio Pro
-AppVersion=2.6.1
+AppVersion=2.6.2
 AppPublisher=កំពូលអ្នកបកប្រែរឿង
 AppPublisherURL=https://github.com/limsorn9/Ai-Studio-Pro
 AppSupportURL=https://github.com/limsorn9/Ai-Studio-Pro
@@ -10,7 +10,7 @@ DefaultDirName={autopf}\Ai Studio Pro
 DefaultGroupName=Ai Studio Pro
 AllowNoIcons=yes
 ; Output installer name
-OutputBaseFilename=AiStudioPro_Setup
+OutputBaseFilename=AiStudioPro_v2.6.2_Setup
 OutputDir=d:\Ai Studio Pro\out
 ; Ultra compression
 Compression=lzma2/ultra64
