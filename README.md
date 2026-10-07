@@ -4,10 +4,11 @@
 
 **កម្មវិធី Dubbing & Voice Clone ភាសាខ្មែរ ឥតគិតថ្លៃ**
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![License: Proprietary](https://img.shields.io/badge/License-Proprietary-red.svg)](LICENSE.md)
 [![Version](https://img.shields.io/badge/version-2.6.1-blue.svg)](package.json)
 [![Platform](https://img.shields.io/badge/platform-Windows-lightgrey.svg)]()
-[![Made for](https://img.shields.io/badge/made%20for-TikTok%20%7C%20YouTube%20%7C%20Facebook-red.svg)]()
+[![Author](https://img.shields.io/badge/Author-@limsorn-blue.svg)](https://t.me/limsorn)
+
 
 </div>
 
@@ -68,11 +69,14 @@
 
 ---
 
-## 📄 License
+## 📄 សិទ្ធិកាន់កាប់ និងអាជ្ញាប័ណ្ណ (License)
+ 
+រក្សាសិទ្ធិគ្រប់យ៉ាង © 2026 **AiStudioPro — ដោយ @limsorn**
+ 
+* កូដ និងកម្មវិធីនេះជាកម្មសិទ្ធិផ្តាច់មុខរបស់ **@limsorn** ([https://t.me/limsorn](https://t.me/limsorn))។
+* ហាមដាច់ខាតចំពោះការយកទៅកែច្នៃ បំប្លែង លក់បន្ត ឬប្រើប្រាស់ AI ណាមួយមកកែប្រែដោយគ្មានការអនុញ្ញាតជាលាយលក្ខណ៍អក្សរ។
+* សូមអានព័ត៌មានលម្អិតក្នុង [LICENSE.md](LICENSE.md) និង [AGENTS.md](AGENTS.md)។
 
-MIT License — © 2026 **AiStudioPro កំពូលអ្នកបកប្រែសម្លេង**
-
-ចែករំលែកបាន · ប្រើដោយឥតគិតថ្លៃ · Open Source
 
 ---
 
