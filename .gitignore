@@ -35,6 +35,7 @@ logs/
 *.key
 secrets.json
 
-# IDE
-.vscode/
-.idea/
+# Archives
+*.zip
+Demucs_Bundle_CUDA.zip
+
