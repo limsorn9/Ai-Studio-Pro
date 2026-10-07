@@ -1,22 +1,13 @@
 {
-  "name": "aistudiopro",
+  "name": "dubber-bisach-clone-pro",
   "version": "2.6.1",
   "private": true,
-  "description": "AiStudioPro កំពូលអ្នកបកប្រែសម្លេង — Khmer voice-clone dubbing studio for TikTok, YouTube Shorts and Facebook Reels",
+  "description": "Dubber បីសាច [ Clone សម្លេង Pro ] — Khmer voice-clone dubbing studio for TikTok, YouTube Shorts and Facebook Reels",
   "author": {
-    "name": "AiStudioPro កំពូលអ្នកបកប្រែសម្លេង",
-    "email": "limsorn9@gmail.com"
+    "name": "Dubber បីសាច [ Clone សម្លេង Pro ]",
+    "email": "vornraingseyvong@gmail.com"
   },
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/limsorn9/Ai-Studio-Pro.git"
-  },
-  "homepage": "https://github.com/limsorn9/Ai-Studio-Pro#readme",
-  "bugs": {
-    "url": "https://github.com/limsorn9/Ai-Studio-Pro/issues",
-    "email": "limsorn9@gmail.com"
-  },
+  "license": "UNLICENSED",
   "main": "out/main/index.js",
   "type": "module",
   "dependencies": {

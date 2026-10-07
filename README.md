@@ -51,7 +51,7 @@
 កម្មវិធីនេះទាមទារ **License Key** ដើម្បីដំណើរការ ប៉ុន្តែវាគឺ **ឥតគិតថ្លៃ ១០០%**! ការដាក់ License គឺដើម្បីជួយគ្រប់គ្រងចំនួនអ្នកប្រើប្រាស់ប៉ុណ្ណោះ។
 
 ### 🔑 របៀបសុំ License Key
-1. ចូលទៅកាន់ Telegram ស្វែងរក Bot: [@AiStudioPro2_bot](https://t.me/AiStudioPro2_bot)
+1. ចូលទៅកាន់ Telegram ស្វែងរក Bot: [@sornsecurityrobot](https://t.me/sornsecurityrobot)
 2. ចុច **Start** រួចវាយបញ្ជា `/getlicense`
 3. រង់ចាំ Admin អនុម័ត (Approve) នោះអ្នកនឹងទទួលបាន License Key ភ្លាមៗ។
 4. Copy យក License Key នោះទៅ Paste បញ្ចូលក្នុងកម្មវិធី AiStudioPro រួចចុច Activate ជាការស្រេច! 

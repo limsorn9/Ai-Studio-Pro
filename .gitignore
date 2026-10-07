@@ -3,23 +3,13 @@ node_modules/
 npm-debug.log*
 
 # Build outputs
-app_source/out/
+# (app_source/out contains application code)
 
-# Electron build
-dist/
-release/
-
-# App binary (ធំពេក សម្រាប់ GitHub)
-app/Dubber_Pro.exe
-app/Dubber\ បីសាច\ [\ Clone\ សម្លេង\ Pro\ ].exe
-app/*.exe
-app/*.dll
-app/*.pak
-app/*.bin
-app/*.dat
-app/*.json
-app/locales/
-app/resources/
+# App runtime & binaries (ធំពេក សម្រាប់ GitHub)
+app/
+resources/
+OF.txt
+cuda.txt
 
 # Installer extracted
 installer_extracted/

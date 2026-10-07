@@ -1,6 +1,6 @@
 {
   "name": "ai-studio-pro-license-server",
-  "version": "1.0.0",
+  "version": "2.6.1",
   "description": "License server for Dubber Pro / AI Studio Pro",
   "main": "server.js",
   "type": "commonjs",
@@ -9,11 +9,12 @@
     "dev": "node server.js"
   },
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.18.2",
-    "node-telegram-bot-api": "^0.66.0",
     "firebase-admin": "^12.0.0",
-    "crypto": "*",
-    "cors": "^2.8.5"
+    "node-telegram-bot-api": "^0.66.0",
+    "png-to-ico": "^3.0.2",
+    "rcedit": "^5.0.2"
   },
   "engines": {
     "node": ">=18.0.0"

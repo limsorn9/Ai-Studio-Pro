@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- `font-src` carries the Font Lab's faces, which are the one asset fetched by URL rather than
+         handed to `FontFace` as bytes. Without it they fall to `default-src 'self'` and every one of
+         the 1,542 cards silently renders in a fallback: the fetch itself succeeds under `connect-src`,
+         so nothing looks broken from the outside — only the letterforms are wrong. The bundled
+         `resources/fonts` faces are unaffected either way; they arrive over IPC as ArrayBuffers. -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: blob: pulse-asset:; media-src 'self' blob: pulse-asset:; font-src 'self' pulse-asset:; style-src 'self' 'unsafe-inline'; connect-src 'self' pulse-asset:; script-src 'self';" />
+    <link rel="icon" type="image/png" href="./assets/icon-EAInt3Kl.png" />
+    <title>AiStudioPro កំពូលអ្នកបកប្រែសម្លេង</title>
+    <!--
+      The first-paint splash, inlined because it has to be: everything else in this window arrives
+      with the renderer bundle, and this is the gap *before* that bundle has parsed — the window is
+      already up (electron shows it on ready-to-show) with nothing in `#root` to draw. It used to be
+      a bare dark rectangle for as long as a cold start took.
+
+      A stripped twin of `.boot-splash` in styles.css, which React puts on top of it and which owns
+      the shared rules; the duplication here is bounded to layout and the one keyframe, and it stays
+      inline so it cannot cost a stylesheet round trip on the one paint it exists for.
+    -->
+    <style>
+      /* Two ways in, because neither alone covers everyone. `prefers-color-scheme` styles the very
+         first frame, before any script has run — right for anyone whose choice matches their OS.
+         `html[data-theme]`, stamped by `/src/boot-theme.ts` a frame later, is right for everyone
+         else and wins wherever the two disagree. Without the pair, a light-mode user opens the app
+         into a black rectangle every single time. */
+      body { margin: 0; background: #08090b; }
+      .boot-veil { position: fixed; inset: 0; z-index: 100; display: flex; flex-direction: column;
+        align-items: center; justify-content: center; gap: 18px;
+        font-family: system-ui, sans-serif; color: #f7f5f0;
+        background:
+          radial-gradient(640px 420px at 32% 18%, #f2c14e14, transparent 70%),
+          radial-gradient(560px 380px at 74% 85%, #e9a13c0f, transparent 70%),
+          #08090b; }
+      .boot-veil img { height: 150px; width: auto; filter: drop-shadow(0 14px 26px #000a);
+        animation: boot-bob .5s cubic-bezier(.4, 0, .5, 1) infinite; }
+      .boot-veil div { display: flex; align-items: flex-end; gap: 5px; height: 26px; }
+      .boot-veil i { width: 5px; height: 100%; border-radius: 3px; transform-origin: 50% 100%;
+        background: linear-gradient(#f2c14e, #e0a322); animation: boot-bar 1s ease-in-out infinite; }
+      .boot-veil i:nth-child(2) { animation-duration: .95s; }
+      .boot-veil i:nth-child(3) { animation-duration: .74s; }
+      .boot-veil i:nth-child(4) { animation-duration: 1.13s; }
+      .boot-veil i:nth-child(5) { animation-duration: .83s; }
+      .boot-veil p { margin: 0; font-size: 22px; font-weight: 800; }
+      .boot-veil p span { color: #e0a322; }
+
+      @media (prefers-color-scheme: light) {
+        body { background: #F9FAFB; }
+        .boot-veil { color: #0B1017;
+          background:
+            radial-gradient(640px 420px at 32% 18%, #f2c14e1f, transparent 70%),
+            radial-gradient(560px 380px at 74% 85%, #e9a13c14, transparent 70%),
+            #F9FAFB; }
+        .boot-veil img { filter: drop-shadow(0 14px 26px #0B101726); }
+      }
+      /* The explicit choice outranks the OS preference, in both directions. */
+      html[data-theme="light"] body { background: #F9FAFB; }
+      html[data-theme="light"] .boot-veil { color: #0B1017;
+        background:
+          radial-gradient(640px 420px at 32% 18%, #f2c14e1f, transparent 70%),
+          radial-gradient(560px 380px at 74% 85%, #e9a13c14, transparent 70%),
+          #F9FAFB; }
+      html[data-theme="light"] .boot-veil img { filter: drop-shadow(0 14px 26px #0B101726); }
+      html[data-theme="dark"] body { background: #08090b; }
+      html[data-theme="dark"] .boot-veil { color: #f7f5f0;
+        background:
+          radial-gradient(640px 420px at 32% 18%, #f2c14e14, transparent 70%),
+          radial-gradient(560px 380px at 74% 85%, #e9a13c0f, transparent 70%),
+          #08090b; }
+      html[data-theme="dark"] .boot-veil img { filter: drop-shadow(0 14px 26px #000a); }
+      @keyframes boot-bob { 0%, 100% { transform: translateY(0) rotate(-1.2deg); } 50% { transform: translateY(-9px) rotate(1.2deg); } }
+      @keyframes boot-bar { 0%, 100% { transform: scaleY(.22); } 50% { transform: scaleY(1); } }
+      @media (prefers-reduced-motion: reduce) {
+        .boot-veil img { animation: none; }
+        .boot-veil i { animation: none; transform: scaleY(.55); }
+      }
+    </style>
+    <script type="module" crossorigin src="./assets/index-L22pqO0q.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-BQmrldh6.css">
+  </head>
+  <body>
+    <div id="root"></div>
+    <div class="boot-veil" id="boot-veil">
+      <img src="./assets/icon-EAInt3Kl.png" alt="" />
+      <div><i></i><i></i><i></i><i></i><i></i></div>
+      <p>AiStudioPro <span>កំពូលអ្នកបកប្រែសម្លេង</span></p>
+    </div>
+    <!-- Before the app bundle: stamps the saved theme on <html> so the veil above is not always
+         dark. Must stay ahead of main.tsx — module scripts run in document order. -->
+  </body>
+</html>
