@@ -30,6 +30,13 @@ const APPS = {
     icon: '🎵',
     prefix: 'SUNO',
     route: 'bisach-suno-ai-lyric-writer'
+  },
+  'hongguo': {
+    id: 'hongguo',
+    name: 'Hongguo VIP Downloader (ទាញយកភាពយន្ត)',
+    icon: '📥',
+    prefix: 'HG',
+    route: 'hongguo-vip-downloader'
   }
 };
 
@@ -501,8 +508,11 @@ async function handleActivation(req, res, targetAppId) {
   if (lic.expiresAt && Date.now() > lic.expiresAt) return res.status(403).json({ success: false, message: 'License has expired' });
 
   // Cross-app protection
+  let effectiveAppId = targetAppId;
   const keyAppId = lic.appId || detectAppId(upperKey);
-  if (keyAppId !== targetAppId) {
+  if (targetAppId === 'suno' && keyAppId === 'hongguo') {
+    effectiveAppId = 'hongguo';
+  } else if (keyAppId !== targetAppId) {
     const targetAppName = APPS[targetAppId]?.name || targetAppId;
     const originAppName = APPS[keyAppId]?.name || keyAppId;
     return res.status(403).json({
@@ -530,7 +540,7 @@ async function handleActivation(req, res, targetAppId) {
   res.json({
     success: true,
     status: 'active',
-    app: APPS[targetAppId]?.name,
+    app: APPS[effectiveAppId]?.name,
     expiresAt: lic.expiresAt ? new Date(lic.expiresAt).toISOString() : null,
     serverTime: new Date().toISOString()
   });
@@ -550,8 +560,11 @@ async function handleVerification(req, res, targetAppId) {
   if (lic.expiresAt && Date.now() > lic.expiresAt) return res.status(403).json({ success: false, message: 'License has expired' });
 
   // Cross-app protection
+  let effectiveAppId = targetAppId;
   const keyAppId = lic.appId || detectAppId(upperKey);
-  if (keyAppId !== targetAppId) {
+  if (targetAppId === 'suno' && keyAppId === 'hongguo') {
+    effectiveAppId = 'hongguo';
+  } else if (keyAppId !== targetAppId) {
     return res.status(403).json({ success: false, message: 'License key is for another application' });
   }
 
@@ -570,7 +583,7 @@ async function handleVerification(req, res, targetAppId) {
   res.json({
     success: true,
     status: 'active',
-    app: APPS[targetAppId]?.name,
+    app: APPS[effectiveAppId]?.name,
     expiresAt: lic.expiresAt ? new Date(lic.expiresAt).toISOString() : null,
     serverTime: new Date().toISOString()
   });
@@ -583,6 +596,10 @@ app.post('/api/v1/dubber-bei-sach-voice-clone-pro/license/verify/?', (req, res) 
 // 2. Endpoints សម្រាប់ PlengBox Suno AI Lyric Writer
 app.post('/api/v1/bisach-suno-ai-lyric-writer/license/activate/?', (req, res) => handleActivation(req, res, 'suno'));
 app.post('/api/v1/bisach-suno-ai-lyric-writer/license/verify/?', (req, res) => handleVerification(req, res, 'suno'));
+
+// 3. Endpoints សម្រាប់ Hongguo VIP Downloader
+app.post('/api/v1/hongguo-vip-downloader/license/activate/?', (req, res) => handleActivation(req, res, 'hongguo'));
+app.post('/api/v1/hongguo-vip-downloader/license/verify/?', (req, res) => handleVerification(req, res, 'hongguo'));
 
 // Simple Key Inspection
 app.get('/api/license/:key', async (req, res) => {
