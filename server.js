@@ -602,7 +602,7 @@ app.get('/api/license/:key', async (req, res) => {
 
 // Auto-updater metadata for Ai Studio Pro
 app.get('/api/v1/release/status', async (req, res) => {
-  const latestVersion = process.env.LATEST_VERSION || '2.6.2';
+  const latestVersion = process.env.LATEST_VERSION || '2.7.0';
   const asarUrl = process.env.ASAR_UPDATE_URL || ('https://github.com/limsorn9/Ai-Studio-Pro/releases/download/v' + latestVersion + '/app.asar');
   res.json({
     latestVersion,

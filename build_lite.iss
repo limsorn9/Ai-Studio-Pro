@@ -1,7 +1,7 @@
 [Setup]
-AppId={{AiStudio-PRO-V2.6.2-LITE}
+AppId={{AiStudio-PRO-V2.7.0-LITE}
 AppName=Ai Studio Pro
-AppVersion=2.6.2
+AppVersion=2.7.0
 AppPublisher=កំពូលអ្នកបកប្រែរឿង
 AppPublisherURL=https://github.com/limsorn9/Ai-Studio-Pro
 AppSupportURL=https://github.com/limsorn9/Ai-Studio-Pro
@@ -10,7 +10,7 @@ DefaultDirName={autopf}\Ai Studio Pro
 DefaultGroupName=Ai Studio Pro
 AllowNoIcons=yes
 ; Output installer name (1 Single .exe File under 1GB)
-OutputBaseFilename=AiStudioPro_v2.6.2_Lite_Setup
+OutputBaseFilename=AiStudioPro_v2.7.0_Lite_Setup
 OutputDir=d:\Ai Studio Pro\out
 ; Ultra compression
 Compression=lzma2/max
@@ -24,7 +24,7 @@ ArchitecturesInstallIn64BitMode=x64
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
 [Files]
-Source: "d:\Ai Studio Pro\app\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs; Excludes: "model\VoxCPM2\*,resources\khmer-fonts\*,resources\whisper\cublas*.dll,resources\whisper\ggml-cuda.dll,resources\whisper\nvrtc*.dll,environment\Lib\site-packages\torch\lib\*cuda*.dll,environment\Lib\site-packages\torch\lib\*cublas*.dll,environment\Lib\site-packages\torch\lib\*cudnn*.dll,environment\Lib\site-packages\torch\lib\*cusparse*.dll,environment\Lib\site-packages\torch\lib\*cufft*.dll,environment\Lib\site-packages\torch\lib\*cusolver*.dll,environment\Lib\site-packages\torch\lib\*nvrtc*.dll,environment\Lib\site-packages\torch\lib\*curand*.dll,environment\Lib\site-packages\torch\lib\*nvJitLink*.dll,*.lib,*.pdb"
+Source: "d:\Ai Studio Pro\app\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs; Excludes: "tools\*,server\*.bak,model\VoxCPM2\*,resources\khmer-fonts\*,resources\whisper\cublas*.dll,resources\whisper\ggml-cuda.dll,resources\whisper\nvrtc*.dll,environment\Lib\site-packages\torch\lib\*cuda*.dll,environment\Lib\site-packages\torch\lib\*cublas*.dll,environment\Lib\site-packages\torch\lib\*cudnn*.dll,environment\Lib\site-packages\torch\lib\*cusparse*.dll,environment\Lib\site-packages\torch\lib\*cufft*.dll,environment\Lib\site-packages\torch\lib\*cusolver*.dll,environment\Lib\site-packages\torch\lib\*nvrtc*.dll,environment\Lib\site-packages\torch\lib\*curand*.dll,environment\Lib\site-packages\torch\lib\*nvJitLink*.dll,*.lib,*.pdb"
 
 [Icons]
 Name: "{group}\Ai Studio Pro"; Filename: "{app}\AiStudioPro.exe"

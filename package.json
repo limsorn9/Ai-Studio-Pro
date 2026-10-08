@@ -1,6 +1,6 @@
 {
   "name": "ai-studio-pro-license-server",
-  "version": "2.6.2",
+  "version": "2.7.0",
   "description": "License server for Dubber Pro / AI Studio Pro",
   "main": "server.js",
   "type": "commonjs",
