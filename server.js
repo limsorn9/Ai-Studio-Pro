@@ -122,15 +122,31 @@ function formatDate(ms) {
 // ============================================================
 let bot;
 if (BOT_TOKEN) {
-  const WEBHOOK_URL = process.env.WebHook_URL;
-  if (WEBHOOK_URL) {
+  const rawWebhook = process.env.WebHook_URL || process.env.RENDER_EXTERNAL_URL || 'https://ai-studio-pro-capt.onrender.com';
+  const cleanUrl = rawWebhook ? rawWebhook.trim().replace(/\/+$/, '') : '';
+
+  if (cleanUrl && !process.env.USE_POLLING) {
     bot = new TelegramBot(BOT_TOKEN);
-    bot.setWebHook(`${WEBHOOK_URL}/bot${BOT_TOKEN}`);
-    app.post(`/bot${BOT_TOKEN}`, (req, res) => {
-      bot.processUpdate(req.body);
+    const webhookPath = `/bot${BOT_TOKEN}`;
+    const fullWebhookUrl = `${cleanUrl}${webhookPath}`;
+
+    app.post(webhookPath, (req, res) => {
+      try {
+        bot.processUpdate(req.body);
+      } catch (err) {
+        console.error('Error processing telegram update:', err.message);
+      }
       res.sendStatus(200);
     });
-    console.log('✅ Telegram bot started (Webhook mode)');
+
+    bot.setWebHook(fullWebhookUrl)
+      .then(() => console.log(`✅ Telegram webhook successfully set to: ${fullWebhookUrl}`))
+      .catch((err) => {
+        console.error(`❌ Telegram setWebHook failed (${err.message}). Falling back to polling...`);
+        bot.startPolling();
+      });
+
+    console.log(`✅ Telegram bot initialized (Webhook mode -> ${fullWebhookUrl})`);
   } else {
     bot = new TelegramBot(BOT_TOKEN, { polling: true });
     console.log('✅ Telegram bot started (Polling mode)');
@@ -600,4 +616,14 @@ app.get('/api/v1/release/status', async (req, res) => {
 app.listen(PORT, () => {
   console.log(`🚀 Unified Multi-App License Server running on port ${PORT}`);
   console.log(`📦 Registered Apps: ${Object.keys(APPS).join(', ')}`);
+
+  // Keep-alive self-ping for Render free tier (prevents sleep during active usage)
+  const KEEP_ALIVE_URL = process.env.RENDER_EXTERNAL_URL || 'https://ai-studio-pro-capt.onrender.com';
+  if (KEEP_ALIVE_URL) {
+    setInterval(() => {
+      fetch(`${KEEP_ALIVE_URL.replace(/\/+$/, '')}/`)
+        .catch(() => {});
+    }, 10 * 60 * 1000);
+    console.log(`⏱️ Keep-alive ping active for: ${KEEP_ALIVE_URL}`);
+  }
 });

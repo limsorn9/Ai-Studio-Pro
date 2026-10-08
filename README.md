@@ -85,3 +85,5 @@
 - 📧 Email: [limsorn9@gmail.com](mailto:limsorn9@gmail.com)
 - 🐛 Bugs: [GitHub Issues](https://github.com/limsorn9/Ai-Studio-Pro/issues)
 
+• ភ្ជាប់មកជាមួយ Models & CUDA ពេញលេញទាំងអស់
+• មិនបាច់ប្រើអ៊ីនធឺណិតបន្ថែមពេលប្រើប្រាស់
