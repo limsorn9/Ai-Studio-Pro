@@ -1,3 +1,28 @@
+const fs = require('fs');
+const path = require('path');
+try { require('dotenv').config(); } catch (_) {}
+
+// Fallback: manually load .env if process.env wasn't populated
+const envPath = path.join(__dirname, '.env');
+if (fs.existsSync(envPath)) {
+  const envContent = fs.readFileSync(envPath, 'utf8');
+  for (const line of envContent.split(/\r?\n/)) {
+    const trimmed = line.trim();
+    if (!trimmed || trimmed.startsWith('#')) continue;
+    const eqIdx = trimmed.indexOf('=');
+    if (eqIdx > 0) {
+      const key = trimmed.slice(0, eqIdx).trim();
+      let val = trimmed.slice(eqIdx + 1).trim();
+      if ((val.startsWith('"') && val.endsWith('"')) || (val.startsWith("'") && val.endsWith("'"))) {
+        val = val.slice(1, -1);
+      }
+      if (!process.env[key]) {
+        process.env[key] = val;
+      }
+    }
+  }
+}
+
 const express = require('express');
 const TelegramBot = require('node-telegram-bot-api');
 const crypto = require('crypto');
@@ -46,9 +71,22 @@ const APPS = {
 let db;
 try {
   let serviceAccount = process.env.FIREBASE_CREDENTIALS;
+  const keyFile = path.join(__dirname, 'firebase-key.json');
+  if (!serviceAccount && fs.existsSync(keyFile)) {
+    try {
+      serviceAccount = fs.readFileSync(keyFile, 'utf8');
+    } catch (_) {}
+  } else if (serviceAccount && typeof serviceAccount === 'string' && fs.existsSync(path.resolve(serviceAccount))) {
+    try {
+      serviceAccount = fs.readFileSync(path.resolve(serviceAccount), 'utf8');
+    } catch (_) {}
+  }
+
   if (serviceAccount) {
     try {
-      serviceAccount = JSON.parse(serviceAccount);
+      if (typeof serviceAccount === 'string') {
+        serviceAccount = JSON.parse(serviceAccount);
+      }
       admin.initializeApp({
         credential: admin.credential.cert(serviceAccount),
         databaseURL: process.env.FIREBASE_DB_URL
