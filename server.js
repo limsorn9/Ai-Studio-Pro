@@ -193,8 +193,13 @@ if (BOT_TOKEN) {
 
     console.log(`✅ Telegram bot initialized (Webhook mode -> ${fullWebhookUrl})`);
   } else {
-    bot = new TelegramBot(BOT_TOKEN, { polling: true });
-    console.log('✅ Telegram bot started (Polling mode)');
+    bot = new TelegramBot(BOT_TOKEN);
+    bot.deleteWebHook({ drop_pending_updates: false })
+      .catch(() => {})
+      .finally(() => {
+        bot.startPolling();
+        console.log('✅ Telegram bot started (Polling mode)');
+      });
   }
 
   // /start
