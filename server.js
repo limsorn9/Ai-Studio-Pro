@@ -167,7 +167,7 @@ function formatDate(ms) {
 // ============================================================
 let bot;
 if (BOT_TOKEN) {
-  const rawWebhook = process.env.WebHook_URL || process.env.RENDER_EXTERNAL_URL || 'https://ai-studio-pro-capt.onrender.com';
+  const rawWebhook = process.env.WebHook_URL || '';
   const cleanUrl = rawWebhook ? rawWebhook.trim().replace(/\/+$/, '') : '';
 
   if (cleanUrl && !process.env.USE_POLLING) {
@@ -671,14 +671,4 @@ app.get('/api/v1/release/status', async (req, res) => {
 app.listen(PORT, () => {
   console.log(`🚀 Unified Multi-App License Server running on port ${PORT}`);
   console.log(`📦 Registered Apps: ${Object.keys(APPS).join(', ')}`);
-
-  // Keep-alive self-ping for Render free tier (prevents sleep during active usage)
-  const KEEP_ALIVE_URL = process.env.RENDER_EXTERNAL_URL || 'https://ai-studio-pro-capt.onrender.com';
-  if (KEEP_ALIVE_URL) {
-    setInterval(() => {
-      fetch(`${KEEP_ALIVE_URL.replace(/\/+$/, '')}/`)
-        .catch(() => {});
-    }, 10 * 60 * 1000);
-    console.log(`⏱️ Keep-alive ping active for: ${KEEP_ALIVE_URL}`);
-  }
 });
