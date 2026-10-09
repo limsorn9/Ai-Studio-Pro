@@ -34,6 +34,8 @@ logs/
 .env*.local
 *.key
 secrets.json
+firebase-key.json
+firebase-*.json
 
 # Archives and build installer output
 *.zip
