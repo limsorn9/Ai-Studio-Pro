@@ -8314,7 +8314,7 @@ const GEMINI_MODEL_OPTIONS = [
   "gemini-3.7-flash",
   "gemini-3.8-flash"
 ];
-const DEFAULT_GEMINI_MODEL = "gemini-3.7-flash";
+const DEFAULT_GEMINI_MODEL = "gemini-3.8-flash";
 const TRANSCRIPTION_LANGUAGE_OPTIONS = [
   { value: "auto", label: "Auto / Mixed" },
   { value: "km", label: "Khmer" },

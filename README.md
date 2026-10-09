@@ -2,7 +2,7 @@
 
 # 🎙️ AiStudioPro — កំពូលអ្នកបកប្រែសម្លេង
 
-**កម្មវិធី Dubbing & Voice Clone ភាសាខ្មែរ ឥតគិតថ្លៃ**
+**កម្មវិធី Dubbing & Voice Clone ភាសាខ្មែរ**
 
 [![License: Proprietary](https://img.shields.io/badge/License-Proprietary-red.svg)](LICENSE.md)
 [![Version](https://img.shields.io/badge/version-2.7.0-blue.svg)](package.json)
