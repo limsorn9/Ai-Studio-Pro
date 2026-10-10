@@ -5,7 +5,7 @@
 **កម្មវិធី Dubbing & Voice Clone ភាសាខ្មែរ**
 
 [![License: Proprietary](https://img.shields.io/badge/License-Proprietary-red.svg)](LICENSE.md)
-[![Version](https://img.shields.io/badge/version-2.7.0-blue.svg)](package.json)
+[![Version](https://img.shields.io/badge/version-2.7.1-blue.svg)](package.json)
 [![Platform](https://img.shields.io/badge/platform-Windows-lightgrey.svg)]()
 [![Author](https://img.shields.io/badge/Author-@limsorn-blue.svg)](https://t.me/limsorn)
 
