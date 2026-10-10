@@ -30,6 +30,7 @@ logs/
 # Temp
 *.tmp
 *.temp
+*.asar
 
 # API Keys / Secrets — ⚠️ NEVER commit these!
 .env

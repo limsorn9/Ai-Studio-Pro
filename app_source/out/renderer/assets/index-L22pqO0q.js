@@ -12953,7 +12953,8 @@ function planEngineApply(queue) {
   return plan;
 }
 const applyEngineToQueue = (queue, plan, ttsProvider) => {
-  const stamp = (manifest) => manifest.ttsProvider === ttsProvider ? manifest : { ...manifest, ttsProvider, updatedAt: (/* @__PURE__ */ new Date()).toISOString() };
+  const currentStt = queue.draft?.sttProvider || "local";
+  const stamp = (manifest) => manifest.ttsProvider === ttsProvider && manifest.sttProvider === currentStt ? manifest : { ...manifest, ttsProvider, sttProvider: currentStt, updatedAt: (/* @__PURE__ */ new Date()).toISOString() };
   const wanted = new Set(plan.apply.map((episode) => episode.manifest.id));
   const draft = stamp(queue.draft);
   const episodes = queue.episodes.map((episode) => {
@@ -35919,11 +35920,11 @@ function SettingsModal({
               activeTab === "about" ? /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "settings-page-content", style: { display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", padding: "40px", textAlign: "center", flex: 1, overflowY: "auto" }, children: [
                 /* @__PURE__ */ jsxRuntimeExports.jsx("img", { src: appIconUrl, style: { width: "128px", height: "128px", borderRadius: "24px", marginBottom: "24px", boxShadow: "0 8px 32px rgba(0,0,0,0.5)" } }),
                 /* @__PURE__ */ jsxRuntimeExports.jsx("h2", { style: { margin: "0 0 8px", fontSize: "32px", fontWeight: "bold", background: "linear-gradient(to right, #4facfe 0%, #00f2fe 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }, children: "Ai Studio Pro" }),
-                /* @__PURE__ */ jsxRuntimeExports.jsx("p", { style: { margin: "0 0 10px", color: "var(--text-muted, #888)", fontSize: "16px", fontWeight: "500" }, children: "Version 2.7.0" }),
+                /* @__PURE__ */ jsxRuntimeExports.jsx("p", { style: { margin: "0 0 10px", color: "var(--text-muted, #888)", fontSize: "16px", fontWeight: "500" }, children: "Version 2.7.1" }),
 /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { style: { marginBottom: "22px", display: "flex", flexDirection: "column", alignItems: "center", gap: "8px", width: "100%", maxWidth: "420px" }, children: [
   !updResult && !updChecking && /* @__PURE__ */ jsxRuntimeExports.jsx("button", { type: "button", onClick: handleCheckUpdate, style: { padding: "8px 20px", background: "rgba(0, 150, 255, 0.15)", border: "1px solid rgba(0, 150, 255, 0.4)", borderRadius: "20px", color: "#38bdf8", fontSize: "13px", fontWeight: "600", cursor: "pointer", display: "flex", alignItems: "center", gap: "6px" }, children: "🔄 ឆែកមើលកំណែថ្មី (Check for Updates)" }),
   updChecking && /* @__PURE__ */ jsxRuntimeExports.jsx("div", { style: { color: "#38bdf8", fontSize: "13px", display: "flex", alignItems: "center", gap: "8px" }, children: "⏳ កំពុងឆែកមើលកំណែថ្មី... (Checking for updates...)" }),
-  updResult && !updResult.hasUpdate && /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { style: { background: "rgba(34, 197, 94, 0.1)", border: "1px solid rgba(34, 197, 94, 0.3)", borderRadius: "12px", padding: "8px 16px", color: "#4ade80", fontSize: "13px" }, children: [ "✅ អ្នកកំពុងប្រើ Version ចុងក្រោយបង្អស់ហើយ (v2.7.0) ", /* @__PURE__ */ jsxRuntimeExports.jsx("button", { type: "button", onClick: handleCheckUpdate, style: { background: "none", border: "none", color: "#38bdf8", cursor: "pointer", textDecoration: "underline", marginLeft: "6px", fontSize: "12px" }, children: "ឆែកម្តងទៀត" }) ] }),
+  updResult && !updResult.hasUpdate && /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { style: { background: "rgba(34, 197, 94, 0.1)", border: "1px solid rgba(34, 197, 94, 0.3)", borderRadius: "12px", padding: "8px 16px", color: "#4ade80", fontSize: "13px" }, children: [ "✅ អ្នកកំពុងប្រើ Version ចុងក្រោយបង្អស់ហើយ (v2.7.1) ", /* @__PURE__ */ jsxRuntimeExports.jsx("button", { type: "button", onClick: handleCheckUpdate, style: { background: "none", border: "none", color: "#38bdf8", cursor: "pointer", textDecoration: "underline", marginLeft: "6px", fontSize: "12px" }, children: "ឆែកម្តងទៀត" }) ] }),
   updResult && updResult.hasUpdate && /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { style: { background: "linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(6, 182, 212, 0.15))", border: "1px solid rgba(16, 185, 129, 0.4)", borderRadius: "14px", padding: "16px 20px", width: "100%", textAlign: "center" }, children: [
     /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { style: { color: "#34d399", fontWeight: "700", fontSize: "15px", marginBottom: "6px" }, children: [ "🎉 មានកំណែថ្មី៖ Version ", updResult.latestVersion ] }),
     /* @__PURE__ */ jsxRuntimeExports.jsx("div", { style: { color: "#cbd5e1", fontSize: "12px", marginBottom: "12px" }, children: "អាប់ដេត Patch លឿនរហ័ស (~50MB) ដោយមិនចាំបាច់ដំឡើងឡើងវិញ" }),
@@ -44843,7 +44844,22 @@ ${canvasFrame.imageBottom?.path ?? ""}` : void 0;
                 voicePreferences: transcription.voicePreferences,
                 onSttProvider: (sttProvider) => {
                   setProject((previous) => ({ ...previous, sttProvider, updatedAt: (/* @__PURE__ */ new Date()).toISOString() }));
+                  setQueue((previous) => ({
+                    ...previous,
+                    draft: { ...previous.draft, sttProvider },
+                    episodes: previous.episodes.map((ep) => ({
+                      ...ep,
+                      manifest: { ...ep.manifest, sttProvider, updatedAt: (/* @__PURE__ */ new Date()).toISOString() }
+                    }))
+                  }));
                   saveSetting({ sttProvider });
+                  const total = queueRef.current?.episodes?.length || 1;
+                  const label = sttProvider === "local" ? "Whisper+ Local (Google Translate)" : sttProvider === "groq" ? "Groq Whisper" : sttProvider;
+                  showToast({
+                    tone: "success",
+                    key: "stt-sync",
+                    message: `បានប្តូរជម្រើសបម្លែង/បកប្រែទៅ ${label} សម្រាប់គ្រប់ ${total} វគ្គទាំងអស់!`
+                  });
                 },
                 targetLanguage,
                 onTargetLanguage: (picked) => {

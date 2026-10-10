@@ -98,7 +98,7 @@ def run_translate(input_file, output_file, device_type, target_lang):
         logger.info(f"Translating batch {batch_idx+1}/{len(batches)} ({len(batch)} cues)...")
         print(f"[PROGRESS] {batch_idx+1}/{len(batches)}", flush=True)
 
-        original_texts = [c.get('text', '').strip() for c in batch]
+        original_texts = [(c.get('sourceText') or c.get('text') or '').strip() for c in batch]
         tagged_input = " ".join([f"[[{idx}]] {t}" for idx, t in enumerate(original_texts) if t])
 
         translated_results = [""] * len(batch)
@@ -156,6 +156,10 @@ def run_translate(input_file, output_file, device_type, target_lang):
                 cue['text'] = trans
             else:
                 cue['text'] = original_texts[i]
+            if not cue.get('sourceText'):
+                cue['sourceText'] = original_texts[i]
+            cue['locale'] = g_lang
+            cue['dubStatus'] = 'pending'
 
         time.sleep(0.4)
 
